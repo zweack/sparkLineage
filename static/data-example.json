@@ -1,0 +1,138 @@
+{
+	"tree" : {
+		"nodeName" : "EMPLOYEE",
+		"name" : "EMPLOYEE",
+		"type" : "type3",
+		"code" : "employee",
+		"label" : "Employee Table",
+		"version" : "v1.0",
+		"link" : {
+				"name" : "Link EMPLOYEE",
+				"nodeName" : "EMPLOYEE",
+				"direction" : "ASYN"
+			},
+		"children" : [{
+				"nodeName" : "PART TIME",
+				"name" : "PART TIME",
+				"type" : "type1",
+				"code" : "employee_part_time",
+				"label" : "PART TIME",
+				"version" : "v1.0",
+				"link" : {
+						"name" : "Link node 1 to 2.1",
+						"nodeName" : "PART TIME",
+						"direction" : "SYNC"
+					},
+				"children" : [{
+						"nodeName" : "MORNING SHIFT",
+						"name" : "MORNING SHIFT",
+						"type" : "type2",
+						"code" : "employee_pt_morning_shift",
+						"label" : "MORNING SHIFT",
+						"version" : "v1.0",
+						"link" : {
+								"name" : "Link node 2.1 to 3.1",
+								"nodeName" : "MORNING SHIFT",
+								"direction" : "SYNC"
+							},
+						"children" : []
+					}, {
+						"nodeName" : "EVENING SHIFT",
+						"name" : "EVENING SHIFT",
+						"type" : "type2",
+						"code" : "employee_pt_evening_shift",
+						"label" : "EVENING SHIFT",
+						"version" : "v1.0",
+						"link" : {
+								"name" : "Link node 2.1 to 3.2",
+								"nodeName" : "MORNING SHIFT",
+								"direction" : "SYNC"
+							},
+						"children" : []
+					}
+				]
+			}, {
+				"nodeName" : "CONTRACT BASED",
+				"name" : "CONTRACT BASED",
+				"type" : "type1",
+				"code" : "employee_contract_based",
+				"label" : "CONTRACT BASED",
+				"version" : "v1.0",
+				"link" : {
+						"name" : "Link node 1 to 2.2",
+						"nodeName" : "CONTRACT BASED",
+						"direction" : "ASYN"
+					},
+				"children" : []
+			}, {
+				"nodeName" : "PERMANENT",
+				"name" : "PERMANENT",
+				"type" : "type1",
+				"code" : "employee_permanent",
+				"label" : "PERMANENT",
+				"version" : "v1.0",
+				"link" : {
+						"name" : "Link node 1 to 2.3",
+						"nodeName" : "PERMANENT",
+						"direction" : "ASYN"
+					},
+				"children" : [{
+						"nodeName" : "INDIAN",
+						"name" : "INDIAN",
+						"type" : "type1",
+						"code" : "employee_perms_indian",
+						"label" : "INDIAN",
+						"version" : "v1.0",
+						"link" : {
+								"name" : "Link node 2.3 to 3.3",
+								"nodeName" : "INDIAN",
+								"direction" : "ASYN"
+							},
+						"children" : [{
+								"nodeName" : "TECHNOLOGIST",
+								"name" : "TECHNOLOGIST",
+								"type" : "type4",
+								"code" : "employee_perms_ind_technologist",
+								"label" : "TECHNOLOGIST",
+								"version" : "v1.0",
+								"link" : {
+										"name" : "Link node 3.3 to 4.1",
+										"nodeName" : "TECHNOLOGIST",
+										"direction" : "SYNC"
+									},
+								"children" : []
+							}
+						]
+					}, {
+						"nodeName" : "US/UK",
+						"name" : "US/UK",
+						"type" : "type1",
+						"code" : "employee_perms_usuk",
+						"label" : "US/UK",
+						"version" : "v1.0",
+						"link" : {
+								"name" : "Link node 2.3 to 3.4",
+								"nodeName" : "US/UK",
+								"direction" : "ASYN"
+							},
+						"children" : [{
+								"nodeName" : "BUSINESS TEAMS",
+								"name" : "BUSINESS TEAMS",
+								"type" : "type4",
+								"code" : "employee_perms_usuk_business",
+								"label" : "BUSINESS TEAMS",
+								"version" : "v1.0",
+								"link" : {
+										"name" : "Link node 3.4 to 4.2",
+										"nodeName" : "TECHNOLOGIST",
+										"direction" : "ASYN"
+									},
+								"children" : []
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

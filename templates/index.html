@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<!-- note how items from the "static" folder are linked -->
+
+<div class="container">
+        <ct-visualization id="tree-container"></ct-visualization>
+        <script>
+            d3.json("{{ url_for('static', filename='data-example.json') }}", function(error, json) {
+                treeBoxes('', json.tree);
+            });
+        </script>
+    </div>
+
+
+{% endblock %}
