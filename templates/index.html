@@ -2,17 +2,15 @@
 
 {% block body %}
 
-
-<!-- note how items from the "static" folder are linked -->
+<ul>    
+    <li><a class="active" href="http://127.0.0.1:5000/">CODE</a></li>
+    <li><a href="http://127.0.0.1:5000/lineage.html">LINEAGE</a></li>
+    <li><a href="#about">ABOUT</a></li>
+  </ul>
 
 <div class="container">
-        <ct-visualization id="tree-container"></ct-visualization>
-        <script>
-            d3.json("{{ url_for('static', filename='data-example.json') }}", function(error, json) {
-                treeBoxes('', json.tree);
-            });
-        </script>
-    </div>
+   
+    <img alt="code" src="{{ url_for('static', filename='images/sample.png') }}" style="margin-top: 20px;">
 
-
+    <button class="button"><a href="http://127.0.0.1:5000/lineage.html" style="color: wheat;">GENERATE</a></button>
 {% endblock %}

@@ -16,8 +16,7 @@ function treeBoxes(urlService, jsonData)
 					bottom : 100,
 					left : 0
 				 },
-		// Height and width are redefined later in function of the size of the tree
-		// (after that the data are loaded)
+		
 		width = 800 - margin.right - margin.left,
 		height = 400 - margin.top - margin.bottom;
 
@@ -35,7 +34,7 @@ function treeBoxes(urlService, jsonData)
 	var tree;
 	var baseSvg,
 		svgGroup,
-		nodeGroup, // If nodes are not grouped together, after a click the svg node will be set after his corresponding tooltip and will hide it
+		nodeGroup, 
 		nodeGroupTooltip,
 		linkGroup,
 		linkGroupToolTip,
@@ -67,9 +66,7 @@ function treeBoxes(urlService, jsonData)
 		root = jsonData;
 		root.fixed = true;
 
-		// Dynamically set the height of the main svg container
-		// breadthFirstTraversal returns the max number of node on a same level
-		// and colors the nodes
+		
 		var maxDepth = 0;
 		var maxTreeWidth = breadthFirstTraversal(tree.nodes(root), function(currentLevel) {
 			maxDepth++;
@@ -99,7 +96,7 @@ function treeBoxes(urlService, jsonData)
 		      //.scaleExtent([0.5, 1.5]) // Limit the zoom scale
 		      .on('zoom', zoomAndDrag));
 
-		// Mouse wheel is desactivated, else after a first drag of the tree, wheel event drags the tree (instead of scrolling the window)
+		
 		getMouseWheelEvent();
 		d3.select('#tree-container').select('svg').on(mouseWheelName, null);
 		d3.select('#tree-container').select('svg').on('dblclick.zoom', null);
@@ -109,10 +106,7 @@ function treeBoxes(urlService, jsonData)
 		.append('g')
 		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-		// SVG elements under nodeGroupTooltip could be associated with nodeGroup,
-		// same for linkGroupToolTip and linkGroup,
-		// but this separation allows to manage the order on which elements are drew
-		// and so tooltips are always on top.
+		
 		nodeGroup = svgGroup.append('g')
 					.attr('id', 'nodes');
 		linkGroup = svgGroup.append('g')
@@ -142,7 +136,7 @@ function treeBoxes(urlService, jsonData)
 			d.y = d.depth * (rectNode.width * 1.5);
 		});
 
-	// 1) ******************* Update the nodes *******************
+	
 		var node = nodeGroup.selectAll('g.node').data(nodes, function(d) {
 			return d.id || (d.id = ++i);
 		});
@@ -150,11 +144,7 @@ function treeBoxes(urlService, jsonData)
 			return d.id || (d.id = ++i);
 		});
 
-		// Enter any new nodes at the parent's previous position
-		// We use "insert" rather than "append", so when a new child node is added (after a click)
-		// it is added at the top of the group, so it is drawed first
-		// else the nodes tooltips are drawed before their children nodes and they
-		// hide them
+		
 		var nodeEnter = node.enter().insert('g', 'g.node')
 		.attr('class', 'node')
 		.attr('transform', function(d) {
@@ -260,7 +250,7 @@ function treeBoxes(urlService, jsonData)
 		nodeExit.select('text').style('fill-opacity', 1e-6);
 
 
-	// 2) ******************* Update the links *******************
+	
 		var link = linkGroup.selectAll('path').data(links, function(d) {
 			return d.target.id;
 		});
@@ -293,8 +283,7 @@ function treeBoxes(urlService, jsonData)
 				  });
 			};
 
-		// Enter any new links at the parent's previous position.
-			// Enter any new links at the parent's previous position.
+		
 			var linkenter = link.enter().insert('path', 'g')
 			.attr('class', 'link')
 			.attr('id', function(d) { return 'linkID' + d.target.id; })
@@ -415,9 +404,7 @@ function treeBoxes(urlService, jsonData)
 		update(d);
 	}
 
-	// Breadth-first traversal of the tree
-	// func function is processed on every node of a same level
-	// return the max level
+	
 	  function breadthFirstTraversal(tree, func)
 	  {
 		  var max = 0;
